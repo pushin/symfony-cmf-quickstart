@@ -7,6 +7,8 @@ class AppKernel extends Kernel
 {
     public function registerBundles()
     {
+        error_reporting(E_ALL);
+        ini_set('display_errors', 1);
         $bundles = array(
             // enable symfony-standard bundles
             new Symfony\Bundle\FrameworkBundle\FrameworkBundle(),
@@ -64,6 +66,15 @@ class AppKernel extends Kernel
             // block caching and feeds
             new Sonata\CacheBundle\SonataCacheBundle(),
             new Eko\FeedBundle\EkoFeedBundle(),
+
+            new Sonata\EasyExtendsBundle\SonataEasyExtendsBundle(),
+
+            new FOS\UserBundle\FOSUserBundle(),
+            new Sonata\UserBundle\SonataUserBundle('FOSUserBundle'),
+
+            new Sonata\DoctrineORMAdminBundle\SonataDoctrineORMAdminBundle(),
+
+            new Application\Sonata\UserBundle\ApplicationSonataUserBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {
